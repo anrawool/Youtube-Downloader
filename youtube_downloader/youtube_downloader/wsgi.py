@@ -1,5 +1,5 @@
 """
-WSGI config for youtube_donwloader project.
+WSGI config for youtube_downloader project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "youtube_donwloader.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "youtube_downloader.settings")
 
 application = get_wsgi_application()
