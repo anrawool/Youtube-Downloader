@@ -1,24 +1,33 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <title>Youtube Downloader</title>
 </head>
 <body>
 
-    <h1>Youtube Downloader</h1>
-    
-    <form action="#" method="post">
-        {% csrf_token %}
-        <input type="text" name="link" id="urlInput">
-        <button type="submit" name="save" value="save">Download</button>
-    </form>
+    <div class="container">
+        <h1>Youtube Downloader</h1>
+        
+        <form action="#" method="post">
+            {% csrf_token %}
+            <input type="text" name="link" id="urlInput" placeholder="Enter YouTube video URL" required autocomplete="off">
+            <button type="submit" name="save" value="save" id="downloadButton">Download</button>
+        </form>
 
-    {% if download_links %}
-        {% for type, link in download_links.items %}
-            <h2><a href="{{link}}">View {{type}}</a></h2>
-        {% endfor %}
-    {% endif %}
+        <h2>Links For <br><span class="video-name">{{name}}</span></h2> <!-- Added span with class for video name -->
+        {% if download_links %}
+            {% for type, link in download_links.items %}
+                <h2><a href="{{link}}">Download {{type}}</a></h2>
+            {% endfor %}
+        {% endif %}
+    </div>
+
 </body>
 </html>

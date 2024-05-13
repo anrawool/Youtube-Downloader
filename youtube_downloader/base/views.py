@@ -11,13 +11,13 @@ def get_link(url):
     video_stream = ytobject.streams.filter(only_video=True)
     video_stream = video_stream[0]
 
-    download_links = {"both": both.url, "audio": audio_stream.url, "video": video_stream.url}
+    download_links = {"Video & Audio": both.url, "Only Audio": audio_stream.url, "Only Video": video_stream.url}
     name = ytobject.title
     return download_links, name
 
 def download_file(request, url, name, type):
     file_url = url
-    if type == 'both' or type == 'video':
+    if type.lower() == 'video & audio' or type.lower() == 'only video':
         name = name + '.mp4'
     else:
         name = name + '.mp3'
